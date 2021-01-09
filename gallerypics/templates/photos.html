@@ -2,52 +2,47 @@
 <div>
     <h1>My Gallery </h1>
 </div>
-
-
-<div class="container-fluid gallery">
-    {% for image in images%}
-    <div class="box img-wrapper" data-toggle="modal" data-target="#image{{image.id}}">
-        <img src="{{image.image.url}}" alt="photo" id="myImg">
-        <a href="{{ imageimage.url }}" download="{{ photo.id }}">
-            <div class="add-btn" title="Download photo">
-                <button><i class="fa fa-download" aria-hidden="true"></i></button>
-            </div>
-        </a>
-    </div>
-
-    <div class="modal fade" id="image{{image.id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="image" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div>
-                        <a href="{{ image.image.url }}" download="{{ image.id }}">
-                            <div class="modal-download-button" title="Download photo">
-                                <button>Download</i></button>
-                            </div>
-                        </a>
-                        <p class="pl-3 pt-3">Published on:<span class="date">{{ image.pub_date |date:'d-m-Y' }}</span></p>
-                    </div>
-
-                    <div class="col">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
-                </div>
-
-                <div class="modal-body">
-                    <img src="{{image.image.url}}" class="img-fluid" alt="photo">
-                    <p class="pl-3 pt-3">Category:<strong>{{ image.category }}</strong></p>
-                </div>
-                <div class="link">
-                    <input type="text" value="{{image.image.url}}" value="{{image.id}}.url" id="link">
-                    <button type="button" onclick="linkFunction()" title="Copy"><i class="fa fa-clone" aria-hidden="true"></i></button>
-                </div>
-                <div class="modal-footer "></div>
-            </div>
+<div>Here is my gallery</div>
+{% extends 'base.html' %} {% block content %} {{block.super}}
+<div class="container-fluid" style="background-color: black; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Welcome To My Gallery Hub</h1>
+            <p class="lead">This are the <strong>Categories to be searched;food,bikes,scenery,animals;</strong></p>
         </div>
     </div>
-    {% endfor %}
+    <div class="column container">
+        {% for image in image %}
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <img src="{{image.image.url}}" class="img-responsive img-fluid img-thumbnail" style="width: 300px;height:200px" data-toggle="modal" data-target="#{{ image.id }}">
+        </div>
+        <!-- Modal -->
+        <div class="modal fade center" id="{{ image.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-full-height modal-right" role="document">
+                <div class="modal-content">
+                    <div class="modal-heading">
+                        <h3 class="modal-title w-100 text-center" id="imagetitle"> {{image.image_name}}</h3>
+                        <button type="btn btn-primary" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="card-img-top img-responsive" id="img{{image.id}}" src="{{image.image.url}}" alt="Card image cap">
+                        <p class="card-text photo ">Image description : {{image.image_description}}.</p>
+                        <p class="card-text shot">Location: {{image.image_location}}</p>
+                        <p class="card-text cate">Category: {{image.image_category}}</p>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <input class="form-control input-lg" type="text" value="{{image.image.url}}" id="{{image.id}}.url">
+
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% for item in location_images %}
+    <a class="button p-3" id="btn" href="/location/{{item.location_name}}">{{item.location_name}}</a> {% endfor %}
 </div>
-</div>
-{% endblock content %}
+{% endblock %}

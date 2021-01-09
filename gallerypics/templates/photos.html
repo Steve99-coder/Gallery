@@ -1,0 +1,51 @@
+ {% extends "photo/base.html" %} 
+ {% block content %}
+
+
+<div class="container-fluid gallery">
+    {% for image in images%}
+    <div class="box img-wrapper" data-toggle="modal" data-target="#image{{image.id}}">
+        <img src="{{image.image.url}}" alt="photo" id="myImg">
+        <a href="{{ imageimage.url }}" download="{{ photo.id }}">
+            <div class="add-btn" title="Download photo">
+                <button><i class="fa fa-download" aria-hidden="true"></i></button>
+            </div>
+        </a>
+    </div>
+
+    <div class="modal fade" id="image{{image.id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="image" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <a href="{{ image.image.url }}" download="{{ image.id }}">
+                            <div class="modal-download-button" title="Download photo">
+                                <button>Download</i></button>
+                            </div>
+                        </a>
+                        <p class="pl-3 pt-3">Published on:<span class="date">{{ image.pub_date |date:'d-m-Y' }}</span></p>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <img src="{{image.image.url}}" class="img-fluid" alt="photo">
+                    <p class="pl-3 pt-3">Category:<strong>{{ image.category }}</strong></p>
+                </div>
+                <div class="link">
+                    <input type="text" value="{{image.image.url}}" value="{{image.id}}.url" id="link">
+                    <button type="button" onclick="linkFunction()" title="Copy"><i class="fa fa-clone" aria-hidden="true"></i></button>
+                </div>
+                <div class="modal-footer "></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock content %}

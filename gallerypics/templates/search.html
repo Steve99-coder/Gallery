@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block content %} {{block.super}}
+<div class="container-fluid">
+
+    <h1>Welcome To My Gallery Hub</h1>
+    <h3>This is are the <strong>Category;food,bikes,scenery,animals,</strong></h3>
+    <div class="jumbotron jumbotron-fluid  mb-5">
+        <div class="container">
+            {% if images%}
+            <h1 class="text-center"> Found {{ images|length }} of searched term {{message}}</h1>
+            {%else%}
+            <h2 class="lead"> Found 0 image category for the search term {{message}}</h2>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="column mt-3">
+        {% for image in images %}
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <img src="{{image.image.url}}" class="img-responsive img-fluid img-thumbnail" style="width: 300px;height:200px" data-toggle="modal" data-target="#{{ image.id }}">
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade center" id="{{ image.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-full-height modal-right" role="document">
+                <div class="modal-content">
+                    <div class="modal-heading">
+                        <h3 class="modal-title w-100 text-center" id="imagetitle"> {{image.image_name}}</h3>
+                        <button type="btn btn-primary" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="card-img-top img-responsive" id="img{{image.id}}" src="{{image.image.url}}" alt="Card image cap">
+                        <p class="card-text photo ">Image description : {{image.image_description}}.</p>
+                        <p class="card-text shot">Location: {{image.image_location}}</p>
+                        <p class="card-text cate">Category: {{image.image_category}}</p>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <input class="form-control input-lg" type="text" value="{{image.image.url}}" id="{{image.id}}.url">
+
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+        {% for item in location_images %}
+        <a class="button p-3" id="btn" href="/location/{{item.location_name}}">{{item.location_name}}</a> {% endfor %}
+    </div>
+    {% endblock %}

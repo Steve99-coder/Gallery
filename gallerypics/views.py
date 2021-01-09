@@ -8,3 +8,15 @@ def image(request):
     image = Image.objects.all()
     image_location = Location.objects.all
     return render(request, 'photos.html', {'image': image})
+
+
+def search_results(request):
+    if 'category' in request.GET and request.GET["category"]:
+        category = request.GET.get("category")
+        searched_images = Image.search_by_category(category)
+        message = f"{category}"
+        print('searched.........',searched_images)
+        return render(request, 'search.html', {"message": message, "images": searched_images})
+    else:
+        message = "Sorry! You haven't searched for any image"
+        return render(request, 'search.html', {"message": message})

@@ -38,3 +38,19 @@ class Location(models.Model):
 
     def delete_location_name(self):
         self.delete() 
+        
+class Category(models.Model):
+    category_name = models.CharField(max_length = 30) 
+
+    
+    def __str__(self):
+        return self.category_name  
+
+
+    def delete_category_name(self):
+        self.delete()         
+
+def update_image(self, Name=None, category=None):
+        self.name = Name if Name else self.Name
+        self.image_category = category if category else self.image_category 
+        self.save()

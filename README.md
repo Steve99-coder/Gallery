@@ -1,23 +1,22 @@
 # Gallery 
 
-#### Author: [SteveNderitu](https://github.com/Steve99-coder/Gallery)
+#### Author: [Stephen Nderitu](https://github.com/Steve99-coder/Gallery)
 
 
 * Link to live site: [Gallery]()
 
 ## Description
-This is my photo gallery where the user can be able to view images and also load them using the link.
+This is a gallery app that users can be able to view images,search for different categories of photos,copy a link to the photo to share with my friends,view photos based on the location they were taken.
 
 
 
 
 ## Setup and installations
-* Fork the data onto your own personal repository.
-* Clone Project to your machine
+* Fork the data .
+* git clone the gallery repo.
 * Activate a virtual environment on terminal: `source virtual/bin/activate`
 * Install all the requirements found in requirements file.
-* On your terminal run `python3.6 manage.py runserver`
-* Access the live site using the local host provided
+* On your terminal run `python3.8 manage.py runserver`
 
 
 
@@ -28,7 +27,7 @@ This is my photo gallery where the user can be able to view images and also load
 * virtual environment
 * pip
 
-#### Clone the Repo and rename it to suit your needs.
+#### Clone the Repo 
 ```bash
 git clone https://github.com/Steve99-coder/Gallery
 ```
@@ -42,7 +41,7 @@ git remote add origin <your-repository-url>
 
 #### Create and activate the virtual environment
 ```bash
-python3.6 -m virtualenv virtual
+python3 -m venv virtual
 ```
 
 ```bash
@@ -69,28 +68,26 @@ Install dependancies that will create an environment for the app to run
 
 #### Make and run migrations
 ```bash
-python3.6 manage.py check
-python manage.py makemigrations news
-python3.6 manage.py sqlmigrate news 0001
-python3.6 manage.py migrate
+python3 manage.py check
+python manage.py makemigrations gallery
+python3 manage.py sqlmigrate gallery 0001
+python3 manage.py migrate
 ```
 
 #### Run the app
 ```bash
-python3.6 manage.py runserver
+python3 manage.py runserver
 ```
 Open [localhost:8000](http://127.0.0.1:8000/)
 
 
-## Bugs
 
-* There are no known bugs at the moment
 ## Testing the Application
 `python manage.py test gallery`
         
-## Built With
+## Technologies Used
 
-* [Python3.6](https://docs.python.org/3/)
+* [Python3.8](https://docs.python.org/3/)
 * Django 
 * Postgresql 
 * Boostrap

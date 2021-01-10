@@ -3,7 +3,7 @@
 #### Author: [Stephen Nderitu](https://github.com/Steve99-coder/Gallery)
 
 
-* Link to live site: [Gallery]()
+* Link to live site: [Gallery](https://galleria12.herokuapp.com/)
 
 ## Description
 This is a gallery app that users can be able to view images,search for different categories of photos,copy a link to the photo to share with my friends,view photos based on the location they were taken.

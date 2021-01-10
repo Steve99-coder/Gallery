@@ -1,13 +1,14 @@
 {% extends 'base.html' %} {% block content %} {{block.super}}
 <div class="container-fluid">
 
-    <h3>This is are the <strong>Category;food,nature,bikes;</strong></h3>
-    <div class="jumbotron jumbotron-fluid  mb-5">
+    <h3>Results by category for : Sports,Entertainment,Boats,Art
+    </h3>
+    <div class="jumbotron   mb-5">
         <div class="container">
             {% if images%}
-            <h1 class="text-center"> Found {{ images|length }} of searched term {{message}}</h1>
+            <h1 class="text-center"> {{ images|length }} items of category {{message}}</h1>
             {%else%}
-            <h2 class="lead"> Found 0 image category for the search term {{message}}</h2>
+            <h2 class="lead"> Did not find {{message}} category </h2>
             {% endif %}
         </div>
     </div>
